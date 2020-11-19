@@ -1,0 +1,74 @@
+body {
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png"), linear-gradient(to right, #5bcdf0, #d1e9f0);
+  margin: 0;
+  text-align: center;
+  font-family: 'Gochi Hand', cursive;
+  position: relative;
+}
+
+h1 {
+  font-size: 8vw;
+}
+
+.main-div{
+  padding-bottom: 20px;
+}
+
+.tryAgain {
+  display: none;
+  text-decoration: none;
+  color: black;
+  font-size: 4vw;
+  transition-duration: 0.5s;
+}
+
+.tryAgain:hover{
+  color: white;
+}
+
+.p-move {
+  font-size: 6vw;
+  margin: 6% 0;
+}
+.freepik-contribution-link{
+  color: black;
+  text-decoration: none;
+}
+
+/* Grid settings*/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.5%;
+  padding: 0 10%;
+}
+
+.grid-item {
+  border: 1px solid rgb(0, 0, 0);
+  width: 100%;
+  padding-bottom: 100%;
+  font-size: 0;
+}
+
+.grid-item:hover {
+  cursor: pointer;
+}
+
+/* Media queries*/
+@media (min-width: 768px) {
+  .grid-container {
+    padding: 2% 15%;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-container {
+    padding: 2% 20%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    padding: 2% 30%;
+  }
+}
