@@ -23,7 +23,9 @@ function shuffle(array) {
 let gridItems = document.querySelectorAll(".grid-item");
 gridItems.forEach((element, index) => {
   element.addEventListener("click", handleClick);
+
   function handleClick() {
+    element.style.pointerEvents = "none";
     element.style.backgroundColor = shuffledColors[index];
     element.style.transition = "1s";
     clickedItems.push(element.id);
@@ -36,13 +38,22 @@ gridItems.forEach((element, index) => {
 
 function checkReply() {
   counter = 0;
+
+  let gridItems2 = document.querySelectorAll(".grid-item");
+  gridItems2.forEach((element, index) => {
+    element.style.pointerEvents = "none";
+  });
+
   let square1Style = document.getElementById(clickedItems[0]).style.backgroundColor;
   let square2Style = document.getElementById(clickedItems[1]).style.backgroundColor;
   if (square1Style === square2Style) {
     setTimeout(hideSquares, 1000);
+
     function hideSquares() {
       document.getElementById(clickedItems[0]).style.visibility = "hidden";
+      document.getElementById(clickedItems[0]).style.transform = "rotateY(180deg)";
       document.getElementById(clickedItems[1]).style.visibility = "hidden";
+      document.getElementById(clickedItems[1]).style.transform = "rotateY(180deg)";
       clickedItems = [];
       if (--remainingPairs === 0) {
         document.getElementById("headerId").innerHTML = "You are the Winner!";
@@ -52,15 +63,27 @@ function checkReply() {
         ++moveNum;
         document.getElementById("moveId").innerHTML = "Move " + moveNum;
       }
+
+      let gridItems3 = document.querySelectorAll(".grid-item");
+      gridItems3.forEach((element, index) => {
+        element.style.pointerEvents = "auto";
+      });
+
     }
   } else {
     setTimeout(moveBack, 1500);
+
     function moveBack() {
       document.getElementById(clickedItems[0]).style.backgroundColor = "";
       document.getElementById(clickedItems[1]).style.backgroundColor = "";
       clickedItems = [];
       ++moveNum;
       document.getElementById("moveId").innerHTML = "Move " + moveNum;
+
+      let gridItems3 = document.querySelectorAll(".grid-item");
+      gridItems3.forEach((element, index) => {
+        element.style.pointerEvents = "auto";
+      });
     }
   }
 }
